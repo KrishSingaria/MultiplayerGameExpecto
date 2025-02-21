@@ -1,10 +1,19 @@
 # ninja log v5
 16	1760	7607985980226176	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	3c85c07eab7124cb
+29	1963	7607985981954516	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5398867a1e6bbcea
 4	1829	7607985980683724	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	22988d014af2f269
+0	1954	7607985982215132	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bde0f8820a663e8f
 24	1863	7607985980835841	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5a02bba1ad220272
 12	1880	7607985980408812	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ef6e667c3d0d5979
-0	1954	7607985982215132	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bde0f8820a663e8f
-29	1963	7607985981954516	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5398867a1e6bbcea
 20	2264	7607985985399051	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	7d3c1092292b6398
-8	2418	7607985986960241	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b46e0573da4f533c
 2418	2557	7607985988421427	D:/gamedev/MultiplayerGameExpecto/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6d6a7143/obj/arm64-v8a/libgame.so	cd760f96ac2b5097
+8	2418	7607985986960241	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b46e0573da4f533c
+20	1937	7613101330808412	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	3c85c07eab7124cb
+16	1946	7613101330984849	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	22988d014af2f269
+27	2029	7613101331691370	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5a02bba1ad220272
+13	2040	7613101331840034	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ef6e667c3d0d5979
+32	2172	7613101333308309	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5398867a1e6bbcea
+5	2255	7613101334095472	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bde0f8820a663e8f
+23	2652	7613101338035640	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	7d3c1092292b6398
+9	2800	7613101339652523	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	b46e0573da4f533c
+2801	3010	7613101341835057	D:/gamedev/MultiplayerGameExpecto/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6d6a7143/obj/arm64-v8a/libgame.so	cd760f96ac2b5097

@@ -1,16 +1,22 @@
 using UnityEngine;
+using Unity.Netcode;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
-public class GPSlocation : MonoBehaviour
+public class GPSlocation : NetworkBehaviour
 {
     private TextMeshProUGUI textboi;
     bool startedGPS = false;
+    bool startingGPS = false;
     private string error_str;
+    [SerializeField] private Button sendButton;
     void Start()
     {
         textboi = GetComponent<TextMeshProUGUI>();
+        sendButton.onClick.AddListener(OnSendButtonClicked);
         StartCoroutine(StartGPS());
+
     }
     private void Update()
     {
@@ -21,10 +27,16 @@ public class GPSlocation : MonoBehaviour
         {
             textboi.text = error_str;
         }
+        if (NetworkManager.Singleton.IsClient)
+        {
+            Debug.Log("Is Client");
+        }
+        if (NetworkManager.Singleton.IsConnectedClient) { Debug.Log("Is Connected"); }
     }
 
     IEnumerator StartGPS()
     {
+        startingGPS = true;
         // Check if location service is enabled
         if (!Input.location.isEnabledByUser)
         {
@@ -63,7 +75,31 @@ public class GPSlocation : MonoBehaviour
 
         // If location is successfully retrieved
         Debug.Log($"Location: Latitude {Input.location.lastData.latitude}, Longitude {Input.location.lastData.longitude}");
+
         startedGPS = true;
+    }
+    private void OnSendButtonClicked()
+    {
+        Debug.Log("Button Pressed");
+        if (IsOwner)
+        {
+            float latitude = Input.location.lastData.latitude;
+            float longitude = Input.location.lastData.longitude;
+            
+            SendLocationServerRpc(latitude, longitude);
+        }
+        // Send to server
+
+    }
+
+    [ServerRpc]
+    private void SendLocationServerRpc(float latitude, float longitude, ServerRpcParams rpcParams = default)
+    {
+        // This runs on the server
+        Debug.Log($"Received location from client {rpcParams.Receive.SenderClientId}:");
+        Debug.Log($"Latitude: {latitude}, Longitude: {longitude}");
+
+
     }
 
     void OnDisable()
