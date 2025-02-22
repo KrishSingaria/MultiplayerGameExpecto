@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
     [Header("UI Elements")]
-    public Dropdown playerDropdown;
+    public TMP_Dropdown playerDropdown;
     public Button playCardButton;
 
     [Header("Card System")]
@@ -55,7 +56,7 @@ public class UIManager : MonoBehaviour
 
         Card selectedCard = availableCards[0]; // Use first card for now
 
-        Debug.Log($"Playing {selectedCard.CardName} on Player {targetPlayer.OwnerClientId}");
+        Debug.Log($"Playing {selectedCard.Cardname} on Player {targetPlayer.OwnerClientId}");
         selectedCard.ApplyCardEffect(targetPlayer, localPlayer.OwnerClientId);
     }
 }

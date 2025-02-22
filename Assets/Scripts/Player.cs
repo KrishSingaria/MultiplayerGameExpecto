@@ -2,8 +2,8 @@ using UnityEngine;
 using Unity.Netcode;
 public class Player : NetworkBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float health = 100;
+
+    [SerializeField] public float health = 100;
 
     public override void OnNetworkSpawn()
     {
@@ -17,7 +17,7 @@ public class Player : NetworkBehaviour
     public void ApplyServerRPC(float damage, ulong attackerid) 
     {
         health -= damage;
-        Debug.Log($"Player {OwnerClientId} took {damage} damage from Player {attackerId}");
+        Debug.Log($"Player {OwnerClientId} took {damage} damage from Player {attackerid}");
         if (health < 0) 
         {
             Respawn();
