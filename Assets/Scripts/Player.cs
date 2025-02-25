@@ -1,30 +1,42 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Netcode;
+
 public class Player : NetworkBehaviour
 {
-
-    [SerializeField] public float health = 100;
+    [SerializeField] private NetworkVariable<float> health = new NetworkVariable<float>(100f);
 
     public override void OnNetworkSpawn()
     {
-        if (IsOwner)
+        if (IsServer && !IsClient)
         {
-            UIManager.Instance.SetLocalPlayer(this);
+            Debug.Log($"Player {OwnerClientId} is running as SERVER.");
+        }
+        else if (IsHost)
+        {
+            Debug.Log($"Player {OwnerClientId} is running as HOST.");
+        }
+        else if (IsClient)
+        {
+            Debug.Log($"Player {OwnerClientId} is running as CLIENT.");
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void ApplyServerRPC(float damage, ulong attackerid) 
+    public void ApplyServerRPC(float damage, ulong attackerId)
     {
-        health -= damage;
-        Debug.Log($"Player {OwnerClientId} took {damage} damage from Player {attackerid}");
-        if (health < 0) 
+        health.Value -= damage;
+        Debug.Log($"Player {OwnerClientId} took {damage} damage from Player {attackerId}");
+
+        if (health.Value <= 0)
         {
             Respawn();
         }
     }
-    public void Respawn() 
+
+    private void Respawn()
     {
-        health = 100;
+        health.Value = 100;
+        Debug.Log($"Player {OwnerClientId} has respawned.");
     }
 }
+
